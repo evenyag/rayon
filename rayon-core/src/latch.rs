@@ -179,7 +179,10 @@ impl<'a, L: Latch> LatchProbe for TickleLatch<'a, L> {
 impl<'a, L: Latch> Latch for TickleLatch<'a, L> {
     #[inline]
     fn set(&self) {
+        std::thread::yield_now();
         self.inner.set();
+        std::thread::yield_now();
         self.sleep.tickle(usize::MAX);
+        std::thread::yield_now();
     }
 }

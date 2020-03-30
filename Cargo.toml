@@ -18,6 +18,10 @@ exclude = ["/ci/*", "/scripts/*", "/.travis.yml", "/appveyor.yml", "/bors.toml"]
 members = ["rayon-demo", "rayon-core", "rayon-futures"]
 exclude = ["ci"]
 
+[[bin]]
+name = "rayon-test"
+path = "src/bin/rayon_test.rs"
+
 [dependencies]
 rayon-core = { version = "1.4", path = "rayon-core" }
 crossbeam-deque = "0.2.0"
