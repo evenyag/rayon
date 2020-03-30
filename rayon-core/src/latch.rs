@@ -192,6 +192,7 @@ impl<'a, L: Latch> Latch for TickleLatch<'a, L> {
     #[inline]
     fn set(&self) {
         self.inner.set();
+        std::thread::yield_now();
         self.sleep.tickle(usize::MAX);
     }
 }
